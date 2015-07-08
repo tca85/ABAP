@@ -1,0 +1,176 @@
+REPORT yppr0011 NO STANDARD PAGE HEADING.
+*----------------------------------------------------------------------*
+*                 Aché Laboratórios Farmacêuticos SA                   *
+*----------------------------------------------------------------------*
+* Programa : YPPR0011                                                  *
+* Transação: YPPR0011                                                  *
+* Descrição: Relatório de necessidades independentes                   *
+* Tipo     : ALV                                                       *
+* Módulo   : PP                                                        *
+* Funcional: Cristiany Mami Otani                                      *
+* ABAP     : Thiago Cordeiro Alves                                     *
+*----------------------------------------------------------------------*
+*                 Descrição das Modificações                           *
+*----------------------------------------------------------------------*
+* Nome      Data         Descrição                                     *
+* ACTHIAGO  21.05.2015  #75787 - Desenvolvimento inicial               *
+*----------------------------------------------------------------------*
+
+*----------------------------------------------------------------------*
+* Estruturas
+*----------------------------------------------------------------------*
+TYPES:
+  BEGIN OF ty_alv        ,
+    matnr TYPE pbim-matnr, " Nº do material
+    maktx TYPE makt-maktx, " Texto breve de material
+    werks TYPE pbim-werks, " Centro
+    bedae TYPE pbim-bedae, " Tipo de necessidade
+    versb TYPE pbim-versb, " Nº versão necessidades independentes
+    pdatu TYPE pbed-pdatu, " Data remessa / fim base
+    plnmg TYPE pbed-plnmg, " Quantidade planejada
+  END OF ty_alv          .
+
+*----------------------------------------------------------------------*
+* Tabelas internas
+*----------------------------------------------------------------------*
+DATA:
+  t_alv TYPE STANDARD TABLE OF ty_alv.
+
+*----------------------------------------------------------------------*
+* Work-areas
+*----------------------------------------------------------------------*
+DATA:
+  w_msg_erro   TYPE bal_s_msg        , " Mensagem de erro de exceção
+  w_layout_key TYPE salv_s_layout_key.
+
+*----------------------------------------------------------------------*
+* Objetos
+*----------------------------------------------------------------------*
+DATA:
+  o_salv_table         TYPE REF TO cl_salv_table         ,
+  o_salv_functions     TYPE REF TO cl_salv_functions_list,
+  o_salv_sorts         TYPE REF TO cl_salv_sorts         ,
+  o_cl_salv_layout     TYPE REF TO cl_salv_layout        ,
+  o_cx_salv_msg        TYPE REF TO cx_salv_msg           ,
+  o_cx_salv_not_found  TYPE REF TO cx_salv_not_found     ,
+  o_cx_salv_existing   TYPE REF TO cx_salv_existing      ,
+  o_cx_salv_data_error TYPE REF TO cx_salv_data_error    .
+
+*----------------------------------------------------------------------*
+* Variáveis
+*----------------------------------------------------------------------*
+DATA:
+  v_matnr    TYPE pbim-matnr, " Nº do material
+  v_werks    TYPE marc-werks, " Centro
+  v_bedae    TYPE pbim-bedae, " Tipo de necessidade
+  v_versb    TYPE pbim-versb, " Nº versão necessidades independentes
+  v_pdatu    TYPE pbed-pdatu, " Data remessa / fim base
+  v_msg_erro TYPE string    .
+
+*----------------------------------------------------------------------*
+* Constantes
+*----------------------------------------------------------------------*
+CONSTANTS:
+  c_variante_default TYPE slis_vari VALUE 'DEFAULT'.
+
+*----------------------------------------------------------------------*
+* Tela de seleção
+*----------------------------------------------------------------------*
+SELECTION-SCREEN BEGIN OF BLOCK b2 WITH FRAME TITLE t001.
+SELECT-OPTIONS: s_matnr FOR v_matnr                     ,
+                s_werks FOR v_werks OBLIGATORY          ,
+                s_bedae FOR v_bedae                     ,
+                s_versb FOR v_versb                     ,
+                s_pdatu FOR v_pdatu OBLIGATORY          .
+SELECTION-SCREEN END OF BLOCK b2                        .
+
+*----------------------------------------------------------------------*
+* Process Before Output
+*----------------------------------------------------------------------*
+INITIALIZATION.
+  t001 = 'Critérios de seleção'.
+
+*----------------------------------------------------------------------*
+* Início
+*----------------------------------------------------------------------*
+START-OF-SELECTION.
+
+  SELECT pbim~matnr
+         makt~maktx
+         pbim~werks
+         pbim~bedae
+         pbim~versb
+         pbed~pdatu
+         pbed~plnmg
+    FROM pbim  " Índice-necs.independentes p/material
+    INNER JOIN pbed ON pbed~bdzei = pbim~bdzei
+    INNER JOIN makt ON makt~matnr = pbim~matnr
+    INTO TABLE t_alv
+    WHERE pbim~matnr IN s_matnr
+      AND pbim~werks IN s_werks
+      AND pbim~bedae IN s_bedae
+      AND pbim~versb IN s_versb
+      AND pbed~pdatu IN s_pdatu.
+
+  IF t_alv IS NOT INITIAL.
+    TRY.
+        cl_salv_table=>factory( IMPORTING r_salv_table = o_salv_table
+                                 CHANGING t_table      = t_alv ).
+
+      CATCH cx_salv_msg INTO o_cx_salv_msg.
+        w_msg_erro = o_cx_salv_msg->get_message( ).
+    ENDTRY.
+
+*   Exibe todos os botões da PF-Status
+    o_salv_functions = o_salv_table->get_functions( ).
+    o_salv_functions->set_all( abap_true )          .
+
+*   Permite que o usuário salve uma variante do layout
+    o_cl_salv_layout = o_salv_table->get_layout( ).
+
+    w_layout_key-report = sy-repid.
+
+    o_cl_salv_layout->set_key( w_layout_key )                                .
+    o_cl_salv_layout->set_save_restriction( if_salv_c_layout=>restrict_none ).
+    o_cl_salv_layout->set_default( abap_true )                               .
+    o_cl_salv_layout->set_initial_layout( c_variante_default )               .
+
+    o_salv_sorts = o_salv_table->get_sorts( ).
+
+    TRY.
+        o_salv_sorts->add_sort( columnname = 'MATNR'
+                                subtotal   = if_salv_c_bool_sap=>true ).
+
+        o_salv_sorts->add_sort( columnname = 'MAKTX'
+                                subtotal   = if_salv_c_bool_sap=>true ).
+
+        o_salv_sorts->add_sort( columnname = 'WERKS'
+                                subtotal   = if_salv_c_bool_sap=>true ).
+
+      CATCH cx_salv_not_found INTO o_cx_salv_not_found.
+        w_msg_erro = o_cx_salv_not_found->get_message( ).
+
+      CATCH cx_salv_existing INTO o_cx_salv_existing.
+        w_msg_erro = o_cx_salv_existing->get_message( ).
+
+      CATCH cx_salv_data_error INTO o_cx_salv_data_error.
+        w_msg_erro = o_cx_salv_data_error->get_message( ).
+    ENDTRY.
+
+    IF w_msg_erro IS NOT INITIAL.
+      CONCATENATE w_msg_erro-msgv1
+                  w_msg_erro-msgv2
+                  w_msg_erro-msgv3
+                  w_msg_erro-msgv4
+             INTO v_msg_erro SEPARATED BY space.
+
+      MESSAGE v_msg_erro TYPE 'S' DISPLAY LIKE 'E'.
+      EXIT.
+    ENDIF.
+
+    o_salv_table->display( ).
+
+  ELSE.
+    MESSAGE 'Dados não encontrados' TYPE 'S' DISPLAY LIKE 'E'. "#EC NOTEXT
+    EXIT.
+  ENDIF.
