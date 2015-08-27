@@ -1,5 +1,7 @@
 METHOD dec_to_bin .
 
+* tsjafdçlkfdsçlkfdsçlkfdsa
+
 * Convert each decimal digit of iv_dec to binary representation
 * and create a binary string
 
