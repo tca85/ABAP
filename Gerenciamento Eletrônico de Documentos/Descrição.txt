@@ -1,0 +1,19 @@
+TCA-CO-55263-Gerenciamento Eletrônico Doctos Clientes-V001
+
+23.07.2013 - Thiago Alves
+
+Gerenciamento Eletrônico de Documentos - sistema para coletar, vincular
+e gerenciar tipos de documentos específicos no cadastro de clientes
+através do SAP DMS
+
+* YGED_AR        - Module Pool para cadastrar os documentos
+* YGED_AR_PARAM  - Visão para cadastrar os tipos de documentos e
+                   extensões permitidas
+* YGED_AR_REPORT - Relatório de status dos documentos cadastrados
+
+
+* Thiago Alves - #55263 - 17.06.2013 - INICIO
+* Thiago Alves - #55263 - 17.06.2013 - FIM
+
+SD - TCA - #55263 - Gerenciamento Eletrônico de Documentos
+DEVK921820

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema targetNamespace="http://sap.com/xi/XI/Mail/30" xmlns:xi="http://sap.com/xi/XI/Mail/30" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+  <xs:element name="Mail">
+    <xs:annotation>
+      <xs:documentation>Mail package for XI - Mail Adapter</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Subject" type="xs:string" minOccurs="0"/>
+        <xs:element name="From" type="xs:string" minOccurs="0"/>
+        <xs:element name="To" type="xs:string" minOccurs="0"/>
+        <xs:element name="Reply_To" type="xs:string" minOccurs="0"/>
+        <xs:element name="Content_Type" type="xs:string" minOccurs="0"/>
+        <xs:element name="Date" type="xs:dateTime" minOccurs="0"/>
+        <xs:element name="Message_ID" type="xs:string" minOccurs="0"/>
+        <xs:element name="X_Mailer" type="xs:string" minOccurs="0"/>
+        <xs:element name="Content" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>any type</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="encoding" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="MailReceipt">
+    <xs:annotation>
+      <xs:documentation>Mail Receipt for XI - Mail Adaper</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Server" type="xs:string"/>
+        <xs:element name="Format" type="xs:string"/>
+        <xs:element name="UseMailPackage" type="xs:boolean"/>
+        <xs:element name="Encoding" type="xs:string"/>
+        <xs:element name="Subject" type="xs:string" minOccurs="0"/>
+        <xs:element name="From" type="xs:dateTime" minOccurs="0"/>
+        <xs:element name="To" type="xs:string" minOccurs="0"/>
+        <xs:element name="Date" type="xs:dateTime" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+</xs:schema>
