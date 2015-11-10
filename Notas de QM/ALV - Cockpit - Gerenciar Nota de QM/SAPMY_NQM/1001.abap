@@ -1,0 +1,7 @@
+* Visualizar Ação Imediata
+
+PROCESS BEFORE OUTPUT.
+  MODULE status_1001.
+
+PROCESS AFTER INPUT.
+  MODULE exit_1001 AT EXIT-COMMAND.
