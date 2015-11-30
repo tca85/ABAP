@@ -1,5 +1,5 @@
 *----------------------------------------------------------------------*
-*                       ACHÉ LABORATÓRIOS                              *
+*                       xxxxxxxxxxxxxxxxx                              *
 *----------------------------------------------------------------------*
 * Programa : YQMR0006                                                  *
 * Transação: YQMR0006                                                  *
@@ -7,7 +7,7 @@
 *            de produção                                               *
 * Tipo     : Relatório ALV                                             *
 * Módulo   : QM                                                        *
-* Funcional: Ikaro Fracaro Lima de Oliveira                            *
+* Funcional: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                            *
 * ABAP     : Thiago Cordeiro Alves                                     *
 *----------------------------------------------------------------------*
 *                 Descrição das Modificações                           *

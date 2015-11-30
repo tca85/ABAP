@@ -1,6 +1,6 @@
 REPORT ynfe_xml NO STANDARD PAGE HEADING.
 *----------------------------------------------------------------------*
-*                 Aché Laboratórios Farmacêuticos SA                   *
+*                 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                   *
 *----------------------------------------------------------------------*
 * Programa...: YNFE_XML                                                *
 * Transação..: YNFE_XML                                                *

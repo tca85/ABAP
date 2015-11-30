@@ -9,7 +9,7 @@ FUNCTION ygrc_enviar_xml_nfe.
 *"      ERRO_ENVIO
 *"----------------------------------------------------------------------
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                    *
 *----------------------------------------------------------------------*
 * Módulo de Função : YGRC_ENVIAR_XML_NFE                               *
 * Grupo de Funções : YGF_GRC_ECC                                       *

@@ -6,10 +6,10 @@ FUNCTION zml85_enviar_email.
 *"     REFERENCE(P_LBLNI) TYPE  ESSR-LBLNI
 *"----------------------------------------------------------------------
 *----------------------------------------------------------------------*
-*                       ACHÉ LABORATÓRIOS                              *
+*                       xxxxxxxxxxxxxxxxx                              *
 *----------------------------------------------------------------------*
 * Módulo   : MM                                                        *
-* Funcional: Sergio Vieira de Alcântara                                *
+* Funcional: xxxxxxxxxxxxxxxxxxxxxxxxxx                                *
 * ABAP     : Thiago Cordeiro Alves                                     *
 * Objetivo : Enviar e-mail para os usuários que precisam aprovar uma   *
 *            folha de serviço                                          *

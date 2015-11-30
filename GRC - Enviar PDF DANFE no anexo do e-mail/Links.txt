@@ -1,8 +1,0 @@
-http://scn.sap.com/thread/3746801
-http://scn.sap.com/docs/DOC-57722
-
-http://scn.sap.com/people/samuel.chandrasekaran2/blog/2008/10/06/xi-mail-adapter-dynamically-building-attachment-and-message-body-content-using-a-simple-udf
-
-https://docs.oracle.com/javaee/6/api/javax/mail/Multipart.html
-
-YTESTE_DANFE

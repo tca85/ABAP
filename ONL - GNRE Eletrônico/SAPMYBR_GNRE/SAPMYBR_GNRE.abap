@@ -1,11 +1,11 @@
 *----------------------------------------------------------------------*
-*                       ACHÉ LABORATÓRIOS                              *
+*                       xxxxxxxxxxxxxxxxx                              *
 *----------------------------------------------------------------------*
 * Programa : SAPMYBR_GNRE                                              *
 * Transação: YBR_GNRE                                                  *
 * Tipo     : Module Pool (Online)                                      *
 * Módulo   : FI/AR (contas a receber)                                  *
-* Funcional: Uderson Luiz Fermino                                      *
+* Funcional: xxxxxxxxxxxxxxxxxxxx                                      *
 * ABAP     : Thiago Cordeiro Alves (ACTHIAGO)                          *
 * Descrição: Gerar XML com dados das NF-e com ICMS ST para a GNRE - MS *
 *            A Guia Nacional de Recolhimento de Tributos Estaduais -   *

@@ -14,7 +14,7 @@ FUNCTION ynfe_enviar_xml_email.
 *"      ERRO_ENVIO
 *"----------------------------------------------------------------------
 *----------------------------------------------------------------------*
-*                Aché Laboratórios Farmacêuticos S.A                   *
+*                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                   *
 *----------------------------------------------------------------------*
 * Módulo de Função : YNFE_ENVIAR_XML_EMAIL                             *
 * Grupo de Funções : YNFE                                              *

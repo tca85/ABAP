@@ -1,5 +1,5 @@
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                    *
 *----------------------------------------------------------------------*
 * Classe   : YCL_POLITICA_COMERCIAL                                    *
 * Método   : GET_MSG_RETORNO                                           *

@@ -1,5 +1,5 @@
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                    *
 *----------------------------------------------------------------------*
 * Classe   : YCL_GRC                                                   *
 * Método   : GET_NRO_PEDIDO_CLIENTE                                    *

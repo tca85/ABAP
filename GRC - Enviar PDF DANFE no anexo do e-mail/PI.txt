@@ -1,8 +1,0 @@
-"C:\Program Files (x86)\Java\jdk1.6.0_27\jre\bin\javaws.exe" http://grunfedev-01.achebr.int:54000/rep/start/sso/repository.jnlp
-
-Enterprise Services Builder (Repository)
-Software Component Version: ZNFE_B2B of fh
-Namespace.................: urn://br.com.ache/Nfe/B2B
-Imported Archive..........: arquivo.jar
-Namespace.................: http://sap.com/xi/NFE/008
-Operation Mapping.........: NTB2B_procNFe_TO_procNFe

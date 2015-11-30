@@ -11,7 +11,7 @@ FUNCTION ynfe_email.
 *"      NAO_EXISTE
 *"----------------------------------------------------------------------
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                    *
 *----------------------------------------------------------------------*
 * Módulo de Função : YNFE_EMAIL                                        *
 * Grupo de Funções : YGF_GRC_ECC                                       *

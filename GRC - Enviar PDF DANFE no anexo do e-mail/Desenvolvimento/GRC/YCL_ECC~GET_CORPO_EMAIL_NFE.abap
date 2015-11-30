@@ -1,5 +1,5 @@
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                   *
 *----------------------------------------------------------------------*
 * Classe   : YCL_ECC                                                   *
 * Método   : GET_CORPO_EMAIL_NFE                                       *

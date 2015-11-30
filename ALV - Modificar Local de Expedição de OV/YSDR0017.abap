@@ -1,5 +1,5 @@
 *----------------------------------------------------------------------*
-*                       ACHÉ LABORATÓRIOS                              *
+*                       xxxxxxxxxxxxxxxxx                              *
 *----------------------------------------------------------------------*
 * Programa : YSDR0017                                                  *
 * Transação: YSDR0017                                                  *
@@ -7,7 +7,7 @@
 *            de venda através dos ítens                                *
 * Tipo     : Relatório ALV                                             *
 * Módulo   : SD                                                        *
-* Funcional: Igor Marques                                              *
+* Funcional: xxxxxxxxxxxx                                              *
 * ABAP     : Thiago Cordeiro Alves                                     *
 *----------------------------------------------------------------------*
 *                 Descrição das Modificações                           *

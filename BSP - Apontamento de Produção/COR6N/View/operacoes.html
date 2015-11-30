@@ -1,0 +1,153 @@
+<!--
+    View.....: Operações
+    Descrição: Exibir o cabeçalho da ordem de processo e uma tabela
+               com as operações que possuem fases superiores
+               (COR3 - Ir para -> Síntese de Operações)
+    Autor....: Thiago Cordeiro Alves
+-->
+
+<div id="divConteudoView">
+    <!-- Cabeçalho da ordem de processo -->
+    <div class="display responsive nowrap" cellspacing="0">
+        <table class="table">
+            <tr>
+                <td>Ordem de Processo</td>
+                <td><span class="badge" name="op" id="op"><%= w_cabecalho_op-ordem_processo %></span>
+                    <input type="hidden" id="nro_op" value="<%= w_cabecalho_op-ordem_processo %>"></td>
+                <td>Lote</td>
+                <td><%= w_cabecalho_op-lote %></td>
+            </tr>
+            <tr>
+                <td>Centro</td>
+                <td><%= w_cabecalho_op-centro %>
+                    <input type="hidden" id="centro" value="<%= w_cabecalho_op-centro %>">
+                </td>
+                <td>Descrição</td>
+                <td><%= w_cabecalho_op-dsc_centro %></td>
+            </tr>
+            <tr>
+                <td>Material</td>
+                <td><%= w_cabecalho_op-material %></td>
+                <td>Descrição</td>
+                <td><%= w_cabecalho_op-dsc_mat %></td>
+            </tr>
+            <tr>
+                <td>Fase Atual</td>
+                <td><%= w_cabecalho_op-fase %></td>
+                <td>Recurso</td>
+                <td><%= w_cabecalho_op-recurso %></td>
+            </tr>
+            <tr>
+                <td>Quantidade Total</td>
+                <td><%= w_cabecalho_op-qtd_total %></td>
+                <td>Quantidade Produzida</td>
+                <td><%= w_cabecalho_op-qtd_produzida %></td>
+            </tr>
+            <tr>
+                <td>Hora Teórica</td>
+                <td><%= w_cabecalho_op-hora_teorica %></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <% IF t_operacao IS NOT INITIAL.
+
+        DATA: v_qtd_estorno  TYPE i                 ,
+              t_operacao_aux LIKE t_operacao        ,
+              w_operacao     LIKE LINE OF t_operacao.
+
+        APPEND lINES OF t_operacao TO t_operacao_aux.
+
+        SORT t_operacao_aux BY estornar_apto ASCENDING.
+
+        DELETE t_operacao_aux WHERE estornar_apto IS INITIAL.
+
+        v_qtd_estorno = LINES( t_operacao_aux ). %>
+
+   <div class="col-sm-10">
+     <div class="DTTT btn-group">
+
+       <% IF w_permissao-parcial IS NOT INITIAL. %>
+            <a class="btn btn-success custom" id="btnAptoParcial" tabindex="0" aria-controls="example">
+   	        <span>Confirmação parcial</span></a>
+       <% ELSE. %>
+            <a class="btn btn-success custom disabled" id="btnAptoParcial" tabindex="0" aria-controls="example">
+   	        <span>Confirmação parcial</span></a>
+       <% ENDIF. %>
+
+       <% IF w_permissao-final IS NOT INITIAL. %>
+            <a class="btn btn-warning custom"  id="btnAptoFinal" tabindex="0" aria-controls="example">
+   	        <span>Confirmação final</span></a>
+       <% ELSE. %>
+            <a class="btn btn-warning custom disabled"  id="btnAptoFinal" tabindex="0" aria-controls="example">
+   	        <span>Confirmação final</span></a>
+       <% ENDIF. %>
+
+       <% IF v_qtd_estorno <> 0
+           AND w_permissao-estornar IS NOT INITIAL. %>
+   	        <a class="btn btn-danger custom" id="btnEstornarApto" tabindex="0" aria-controls="example">
+   	        <span>Estornar confirmação</span></a>
+       <% ELSE. %>
+   	        <a class="btn btn-danger custom disabled" id="btnEstornarApto" tabindex="0" aria-controls="example">
+   	        <span>Estornar confirmação</span></a>
+       <% ENDIF. %>
+
+     </div>
+     <br><br>
+   </div>
+
+    <!-- Tabela com a síntese de operações da COR3 -->
+    <table id="tabelaApto" class="table display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Operação</th>
+                <th>Fase</th>
+                <th>Recurso</th>
+                <th>Confirmação</th>
+
+                <% IF w_permissao-horas IS NOT INITIAL. %>
+                      <th>Hora APO</th>
+                <% ENDIF. %>
+
+                <% IF w_permissao-qtd_boa IS NOT INITIAL. %>
+                      <th>Qtd. boa</th>
+                <% ENDIF. %>
+
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <% LOOP AT t_operacao INTO w_operacao. %>
+             <tr>
+                 <td data-title="Operacao" class="operacao"><%= w_operacao-operacao%></td>
+                 <td data-title="Fase" class="fase"><%= w_operacao-fase%></td>
+                 <td data-title="Recurso" class="recurso"><%= w_operacao-recurso%></td>
+
+                 <% SHIFT w_operacao-confirmacao LEFT DELETING LEADING '0'.%>
+
+                 <td data-title="Confirmacao" class="confirmacao"><%= w_operacao-confirmacao%></td>
+
+                 <!-- Soma das horas do APO Tp. preparação + APO Tp. maquina -->
+                 <% IF w_permissao-horas IS NOT INITIAL. %>
+                       <td data-title="Hora APO" class="hr_apo"><%= w_operacao-hr_apo%></td>
+                 <% ENDIF. %>
+
+                 <% IF w_permissao-qtd_boa IS NOT INITIAL. %>
+                       <td data-title="Qtd. Boa" class="qtd_boa"><%= w_operacao-qtd_boa%></td>
+                 <% ENDIF. %>
+
+                 <td data-title="Apontamento" td class="text-center">
+                    <span class="label label label-default aptoStatus"><%= w_operacao-status_apto%></span>
+                 </td>
+             </tr>
+        <% ENDLOOP. %>
+        </tbody>
+    </table>
+
+    <!-- Popup para exibir os campos para apontamento parcial/final -->
+    <div class="modal fade" id="divModalApontamento"></div>
+    <% ENDIF. %>
+</div> <!-- divConteudoView -->

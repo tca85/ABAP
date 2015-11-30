@@ -1,12 +1,12 @@
 *----------------------------------------------------------------------*
-*                       ACHÉ LABORATÓRIOS                              *
+*                       xxxxxxxxxxxxxxxxx                              *
 *----------------------------------------------------------------------*
 * Programa : YYPCL_PP017                                               *
 * Transação: YPPLEADTIME                                               *
 * Descrição: Relatório de Lead Time para identificar gaps na produção  *
 * Tipo     : Relatório ALV                                             *
 * Módulo   : PP                                                        *
-* Funcional: Meire Vicente Casale                                      *
+* Funcional: xxxxxxxxxxxxxxxxxxxx                                      *
 * ABAP     : Thiago Cordeiro Alves                                     *
 *----------------------------------------------------------------------*
 *                 Descrição das Modificações                           *

@@ -1,6 +1,6 @@
 REPORT ynfe_atualizar_status_b2b NO STANDARD PAGE HEADING.
 *----------------------------------------------------------------------*
-*                 Aché Laboratórios Farmacêuticos SA                   *
+*                 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                   *
 *----------------------------------------------------------------------*
 * Programa...: YNFE_ATUALIZAR_STATUS_B2B                               *
 * Transação..: YNFE_ATUALIZAR_B2B                                      *

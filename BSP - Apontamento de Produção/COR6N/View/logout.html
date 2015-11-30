@@ -1,0 +1,19 @@
+<!--
+    View.....: Logout
+    Descrição: Logout da aplicação
+    Autor....: Thiago Cordeiro Alves
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <script type="text/javascript">
+      function clearCache(){ window.setTimeout('document.execCommand("ClearAuthenticationCache", "false")',1500); }
+    </script>
+  </head>
+  <body onload="clearCache()">
+    <img src="?sap-sessioncmd=logoff" width="1" height="1">
+      <div id="divConteudoView">
+         <h4 align="center"><%= msg %></h4>
+      </div>
+  </body>
+</html>

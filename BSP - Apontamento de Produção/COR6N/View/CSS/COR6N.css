@@ -1,0 +1,59 @@
+.logoAche {
+  width: 70px;
+  padding-top: 4px;
+}
+
+.saudacaoUsuario {
+  color: #777070;
+  text-align: right;
+}
+
+.nomeAplicacao {
+  color: #777070;
+}
+
+.direitos {
+  padding-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.espaco-antes {
+  padding-top: 5px;
+}
+
+.margemTopo {
+  margin-top: 1px;
+}
+
+.navbar-cor {
+  background-color: #efeeef;
+  border-color: #efeeef;
+}
+
+.linhaOculta{
+  display: none;
+}
+ 
+.click {
+  cursor: pointer;
+}
+
+table.tbConfirmacao { 
+	width: 100%; 
+	border-collapse: collapse; 
+}
+
+table.tbConfirmacao tr:nth-of-type(odd) { 
+	background: #eee; 
+}
+table.tbConfirmacao th { 
+	background: #333; 
+	color: white; 
+	font-weight: bold; 
+}
+table.tbConfirmacao td, th { 
+	padding: 6px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+}

@@ -8,7 +8,7 @@ FUNCTION ysd_excluir_politica_comercial.
 *"----------------------------------------------------------------------
 
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                   *
 *----------------------------------------------------------------------*
 * Módulo de Função : YSD_EXCLUIR_POLITICA_COMERCIAL                    *
 * Grupo de Funções : YSD_VK15                                          *

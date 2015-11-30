@@ -15,7 +15,7 @@ FUNCTION ysd_criar_politica_comercial.
 *"     VALUE(T_RETORNO) TYPE  YCT_MENSAGENS
 *"----------------------------------------------------------------------
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                    *
 *----------------------------------------------------------------------*
 * Módulo de Função : YSD_CRIAR_POLITICA_COMERCIAL                      *
 * Grupo de Funções : YSD_VK15                                          *

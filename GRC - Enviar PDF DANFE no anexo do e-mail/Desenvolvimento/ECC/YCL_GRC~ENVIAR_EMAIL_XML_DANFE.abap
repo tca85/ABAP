@@ -1,5 +1,5 @@
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                  *
 *----------------------------------------------------------------------*
 * Classe   : YCL_GRC                                                   *
 * Método   : ENVIAR_EMAIL_XML_DANFE                                    *

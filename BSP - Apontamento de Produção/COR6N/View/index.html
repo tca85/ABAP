@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+    View.....: Inicial
+    Descrição: Automatização do apontamento de horas de ordens de processo
+               Transações SAP: COR6N/CORT/COR3
+               Essa view é como uma Master Page. O conteúdo html das outras
+               views serão exibas dentro da div #divConteudoView, de acordo
+               com a ação realizada na tela (pesquisar, operações, apontar)
+    Autor....: Thiago Cordeiro Alves
+-->
+<html ng-app lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Apontamento de horas de ordens de produção">
+        <meta name="author" content="Thiago Cordeiro Alves">
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="CSS/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="dist/css/sb-admin-2.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="CSS/COR6N.css"/>
+        <link rel="stylesheet" type="text/css" href="CSS/toastr.min.css"/>
+        <link rel="shortcut icon" href="images/ache.ico">
+        <title>Apontamento de horas de ordens de processo - COR6N</title>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                    </button>
+                    <a class="navbar-brand" href="#">Apontamento de folha de tempos para ordem de processo</a>
+                </div>
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i>
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+
+                            <li>
+                                <a href="#"><i class="fa fa-search fa-fw"></i> Pesquisar Ordem Processo</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pencil fa-fw"></i> Operações</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Pesquisar Ordem de Processo</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- Corpo da página -->
+                    <div class="panel-body">
+                        <div id="divPesquisarOP">
+                            <div class="input-group">
+                                <input type="search" maxLength="12" id="ipt_nro_op" class="form-control" required pattern="[0-9]*" title="Informe números de 0-9" placeholder="Informe a ordem de processo" autofocus>
+
+                                <span class="input-group-btn">
+                                    <button type="button" id="btnPesquisarOP" class="btn btn-default">Pesquisar</button>
+                                </span>
+                            </div>
+                        </div> <!-- <div id="divPesquisarOP"> -->
+
+                        <!-- Conteúdo das próximas Views -->
+                        <div id="divConteudoView" class="linhaOculta"></div>
+                    </div> <!-- section class="panel-body" -->
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="JavaScript/jquery.dataTables.1.10.4.min.js"></script>
+        <script type="text/javascript" src="JavaScript/bootstrap-dialog.js"></script>
+        <script type="text/javascript" src="JavaScript/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="JavaScript/bootbox.min.js"></script>
+        <script type="text/javascript" src="JavaScript/bootstrap-waitingfor.js"></script>
+        <script type="text/javascript" src="JavaScript/toastr.min.js"></script>
+        <script type="text/javascript" src="JavaScript/jquery.mask.js"></script>
+        <script type="text/javascript" src="JavaScript/angular.1.5.0.min.js"></script>
+        <script type="text/javascript" src="doInit.js"></script>
+    </body>
+</html>

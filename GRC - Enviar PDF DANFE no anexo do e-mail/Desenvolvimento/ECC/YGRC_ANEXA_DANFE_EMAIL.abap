@@ -8,7 +8,7 @@ FUNCTION ygrc_anexa_danfe_email.
 *"     VALUE(E_BIN_SIZE) TYPE  I
 *"----------------------------------------------------------------------
 *----------------------------------------------------------------------*
-*               Aché Laboratórios Farmacêuticos S.A                    *
+*               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                    *
 *----------------------------------------------------------------------*
 * Módulo de Função : YGRC_ANEXA_DANFE_EMAIL                            *
 * Grupo de Funções : YGF_GRC_ECC                                       *

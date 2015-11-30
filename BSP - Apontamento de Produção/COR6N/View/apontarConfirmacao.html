@@ -1,0 +1,157 @@
+<!--
+    View.....: apontarConfirmacao
+    Descrição: View para apontamento da confirmação da folha de tempos para ordem de processo
+               O usuário pode apontar os mesmos campos que existem na transação COR6N:
+                1 - APO Tp. preparação
+                2 - APO Tp. maquina
+                3 - Custo HH Tp. preparação
+                4 - Custo HH Tp. maquina
+                5 - Quantidade boa
+                6 - Refugo
+    Autor....: Thiago Cordeiro Alves
+-->
+
+<div id="divModalApontamento" class="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Cabeçalho -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><%= nome_tela %></h4>
+            </div>
+
+            <!-- Conteúdo -->
+            <div class="modal-body">
+                <form id="frmAptoOP" class="form-horizontal">
+                    <fieldset disabled>
+                        <input type="hidden" id="tipo_apto" value="<%= tipo_apto %>">
+
+                        <table id="tbConfirmacao" class="tbConfirmacao" style="width:100%">
+                          <tr>
+                            <td><label>Ordem</label></td>
+                            <td><input type="text" id="nro_op" name="nro_op" class="form-control" value="<%= w_apontamento-ordem_processo %>"></td>
+                            <td><input type="text" id="centro" name="centro" class="form-control" value="<%= w_apontamento-centro %>"></td>
+                          </tr>
+                          <tr>
+                            <td><label>Material</label></td>
+                            <td><input type="text" id="material" name="material" class="form-control" value="<%= w_apontamento-material %>"></td>
+                            <td><input type="text" id="dsc_material" name="dsc_material" class="form-control" value="<%= w_apontamento-dsc_material %>"></td>
+                          </tr>
+                          <tr>
+                            <td><label>Operação</label></td>
+                            <td><input type="text" id="operacao" name="operacao" class="form-control" value="<%= w_apontamento-nro_operacao %>"></td>
+                            <td><input type="text" id="dsc_fase" name="dsc_fase" class="form-control" value="<%= w_apontamento-fase %>"></td>
+                          </tr>
+                          <tr>
+                            <td><label>Recurso</label></td>
+                            <td><input type="text" id="recurso" name="recurso" class="form-control" value="<%= w_apontamento-recurso %>"></td>
+                            <td><input type="text" id="dsc_recurso" name="dsc_recurso" class="form-control" value="<%= w_apontamento-dsc_recurso %>"></td>
+                          </tr>
+                          <tr>
+                            <td><label>Qtd. Planejada</label></td>
+                            <td><input type="text" id="qtd_planejada" name="qtd_planejada" class="form-control" value="<%= w_apontamento-qtd_planejada %>"></td>
+                            <td><input type="text" id="un_med" name="un_med" class="form-control" value="<%= w_apontamento-unidade_medida %>"></td>
+                          </tr>
+                        </table>
+                     </fieldset>
+
+                     <br>
+
+                   <table id="tbAtividade" class="tbConfirmacao" style="width:100%">
+                     <thead>
+                     	<tr>
+                        <th>Atividade</th>
+                        <th>A confirmar</th>
+                        <th>Já confirmado</th>
+                     	</tr>
+                     	</thead>
+                      <tbody>
+                        <!-- Pode apontar horas - APO Tp. preparação -->
+                        <% IF w_permissao-hr_apo_tp_prep IS NOT INITIAL. %>
+                             <tr>
+                               <td><label>APO Tp. preparação</label></td>
+                               <td><input type="text" pattern="[0-9]*" id="hr_apo_tp_prep" name="hr_apo_tp_prep" class="form-control"></td>
+                               <td><input type="text" id="tot_hr_apo_tp_prep" name="tot_hr_apo_tp_prep" class="form-control" value="<%= w_apontamento-hr_apo_tp_prep %>" disabled></td>
+                             </tr>
+                        <% ENDIF. %>
+
+                        <!-- Pode apontar horas - APO Tp. maquina -->
+                        <% IF w_permissao-hr_apo_tp_maq IS NOT INITIAL. %>
+                             <tr>
+                               <td><label>APO Tp. máquina</label></td>
+                               <td><input type="text" pattern="[0-9]*" id="hr_apo_tp_maq" name="hr_apo_tp_maq" class="form-control"></td>
+                               <td><input type="text" id="tot_hr_apo_tp_maq" name="tot_hr_apo_tp_maq" class="form-control" value="<%= w_apontamento-hr_apo_tp_maq %>" disabled></td>
+                             </tr>
+                        <% ENDIF. %>
+
+                        <!-- Pode apontar horas - Custo HH Tp. preparação -->
+                        <% IF w_permissao-hr_hh_tp_prep IS NOT INITIAL. %>
+                             <tr>
+                               <td><label>Custo HH Tp. preparação</label></td>
+                               <td><input type="text" pattern="[0-9]*" id="hr_hh_tp_prep" name="hr_hh_tp_prep" class="form-control"></td>
+                               <td><input type="text" id="tot_hr_hh_tp_prep" name="tot_hr_hh_tp_prep" class="form-control" value="<%= w_apontamento-hr_hh_tp_prep %>" disabled></td>
+                             </tr>
+                        <% ENDIF. %>
+
+                        <!-- Pode apontar horas - Custo HH Tp. maquina -->
+                        <% IF w_permissao-hr_hh_tp_maq IS NOT INITIAL. %>
+                             <tr>
+                               <td><label>Custo HH máquina</label></td>
+                               <td><input type="text" pattern="[0-9]*" id="hr_hh_tp_maq" name="hr_hh_tp_maq" class="form-control"></td>
+                               <td><input type="text" id="tot_hr_hh_tp_maq" name="tot_hr_hh_tp_maq" class="form-control" value="<%= w_apontamento-hr_hh_tp_maq %>" disabled></td>
+                             </tr>
+                        <% ENDIF. %>
+
+                        <!-- Pode apontar quantidade boa -->
+                        <% IF w_permissao-qtd_boa IS NOT INITIAL. %>
+                             <tr>
+                               <td><label>Quantidade boa</label></td>
+
+                               <% IF w_apontamento-qtd_boa IS NOT INITIAL. %>
+                                   <td><input type="text" id="qtd_boa" name="qtd_boa" class="form-control" value="<%= w_apontamento-qtd_boa %>"></td>
+                               <% ELSE. %>
+                                   <td><input type="text" id="qtd_boa" name="qtd_boa" class="form-control"></td>
+                               <% ENDIF. %>
+
+                               <td><input type="text" id="tot_qtd_boa" name="tot_qtd_boa" class="form-control" value="<%= w_apontamento-qtd_apontada %>" disabled></td>
+                             </tr>
+                        <% ENDIF. %>
+
+                        <!-- Pode apontar refugo -->
+                        <% IF w_permissao-refugo IS NOT INITIAL. %>
+                             <tr>
+                               <td><label class="control-label">Refugo confirmado</label></td>
+                               <td><input type="text" id="refugo" name="refugo" class="form-control"></td>
+                               <td><input type="text" id="tot_refugo" name="tot_refugo" value="<%= w_apontamento-refugo %>" class="form-control" disabled></td>
+                             </tr>
+                        <% ENDIF. %>
+
+                      </tbody>
+                   </table>
+
+                </form>
+            </div>
+
+            <!-- Rodapé do modal -->
+            <div class="modal-footer">
+           <% IF  w_permissao-hr_apo_tp_prep IS NOT INITIAL
+               OR w_permissao-hr_apo_tp_maq  IS NOT INITIAL
+               OR w_permissao-hr_hh_tp_prep  IS NOT INITIAL
+               OR w_permissao-hr_hh_tp_maq   IS NOT INITIAL
+               OR w_permissao-qtd_boa        IS NOT INITIAL
+               OR w_permissao-refugo         IS NOT INITIAL. %>
+
+                 <button type="button" id="btnSalvar" class="btn btn-danger">Salvar</button>
+
+                 <button type="button" id="btnSair" class="btn btn-success" data-dismiss="modal">
+                    Sair
+                 </button>
+
+            <% ELSE. %>
+                  <p>Usuário sem permissão para apontamento de horas e quantidade</p>
+            <% ENDIF. %>
+            </div>
+       </div>
+    </div>
+</div>
