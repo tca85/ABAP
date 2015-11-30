@@ -1,23 +1,23 @@
 /*----------------------------------------------------------------------*/
-/*                  Aché Laboratórios Farmacêuticos                     */
+/*                  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                     */
 /*----------------------------------------------------------------------*/
 /* BSP      : YAPO - Apontamento de horas de ordens de processo - COR6N */
-/* Módulo   : APO/PP                                                    */
+/* MÃ³dulo   : APO/PP                                                    */
 /* ABAP     : Thiago Cordeiro Alves (ACTHIAGO)                          */
-/* Descrição: Associa as funções JavaScript aos componentes HTMLs, e    */
-/*            após alguma ação na tela, envia a requisição Ajax para o  */
-/*            SAP através do método DO_HANDLE_EVENT() da classe         */
-/*            YCL_CONTROLLER_APONTAMENTO_OP. O resultado é retornado em */
+/* DescriÃ§Ã£o: Associa as funÃ§Ãµes JavaScript aos componentes HTMLs, e    */
+/*            apÃ³s alguma aÃ§Ã£o na tela, envia a requisiÃ§Ã£o Ajax para o  */
+/*            SAP atravÃ©s do mÃ©todo DO_HANDLE_EVENT() da classe         */
+/*            YCL_CONTROLLER_APONTAMENTO_OP. O resultado Ã© retornado em */
 /*            em uma mensagem de sucesso/erro em Json, e em alguns casos*/
-/*            retorna o conteúdo html de uma view                       */
+/*            retorna o conteÃºdo html de uma view                       */
 /*----------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------*/
-/* Variáveis e constantes                                               */
+/* VariÃ¡veis e constantes                                               */
 /*----------------------------------------------------------------------*/
 var odataTable                                    ;
 var oLinhaSelecionada = ""                        ;
-var requisicao        = 'cor6n?onInputProcessing='; // controller + evento + acão
+var requisicao        = 'cor6n?onInputProcessing='; // controller + evento + acÃ£o
 
 /*----------------------------------------------------------------------*/
 /* Pesquisar ordem de processo                                          */
@@ -27,7 +27,7 @@ function pesquisarOrdemProcesso() {
   var qtdDigitos = $('#ipt_nro_op').val().length;
 
   if (qtdDigitos == 0) {
-    exibirMensagemPopup('error', 'Informe o número da ordem de processo');
+    exibirMensagemPopup('error', 'Informe o nÃºmero da ordem de processo');
   }else{
     $.ajax({
       type: "post",
@@ -42,12 +42,12 @@ function pesquisarOrdemProcesso() {
       },
       success: function (retorno) {
         try {
-          //Verifica se o retorno é uma mensagem de erro em Json
+          //Verifica se o retorno Ã© uma mensagem de erro em Json
           var erro = JSON.parse(retorno);
           exibirMensagemPopup(erro.tipo, erro.msg);
           $('#ipt_nro_op').val('');
         } catch (err) {
-          //Retorna o html da view Operações
+          //Retorna o html da view OperaÃ§Ãµes
           $('#ipt_nro_op').val('');
           $('#divPesquisarOP').addClass('linhaOculta');
           $('#divConteudoView').html(retorno);
@@ -55,8 +55,8 @@ function pesquisarOrdemProcesso() {
           setDataTable('#tabelaApto');
         }
       },
-      // Retorna mensagem de erro se houver alguma exception não tratada
-      // na requisição feita ao SAP - YCL_CONTROLLER_APONTAMENTO_OP-DO_HANDLE_EVENT();
+      // Retorna mensagem de erro se houver alguma exception nÃ£o tratada
+      // na requisiÃ§Ã£o feita ao SAP - YCL_CONTROLLER_APONTAMENTO_OP-DO_HANDLE_EVENT();
       error: function (xhr, textStatus, errorThrown) {
         try {
           exibirMensagemPopup("error", xhr.responseText);
@@ -69,7 +69,7 @@ function pesquisarOrdemProcesso() {
 }
 
 /*----------------------------------------------------------------------*/
-/* Salvar confirmação de apontamento da ordem de processo               */
+/* Salvar confirmaÃ§Ã£o de apontamento da ordem de processo               */
 /* ---> cor6n?onInputProcessing=salvarApontamento                       */
 /*----------------------------------------------------------------------*/
 function salvarConfirmacao() {
@@ -93,12 +93,12 @@ function salvarConfirmacao() {
     },
 
     beforeSend: function () {
-      waitingDialog.show('Aguarde enquanto o apontamento é salvo');
+      waitingDialog.show('Aguarde enquanto o apontamento Ã© salvo');
     },
     complete: function () {
       waitingDialog.hide();
     },
-    // Retorna a mensagem de sucesso/erro da requisição, em formato Json
+    // Retorna a mensagem de sucesso/erro da requisiÃ§Ã£o, em formato Json
     success: function (retorno) {
       try {
         if (retorno.tipo == 'success') {
@@ -115,8 +115,8 @@ function salvarConfirmacao() {
         exibirMensagemPopup("error", err.message);
       }
     },
-    // Retorna mensagem de erro se houver alguma exception não tratada
-    // na requisição feita ao SAP - YCL_CONTROLLER_APONTAMENTO_OP-DO_HANDLE_EVENT();
+    // Retorna mensagem de erro se houver alguma exception nÃ£o tratada
+    // na requisiÃ§Ã£o feita ao SAP - YCL_CONTROLLER_APONTAMENTO_OP-DO_HANDLE_EVENT();
     error: function (xhr, textStatus, errorThrown) {
       try {
         exibirMensagemPopup("error", xhr.responseText);
@@ -128,7 +128,7 @@ function salvarConfirmacao() {
 }
 
 /*----------------------------------------------------------------------*/
-/* Logout da aplicação                                                  */
+/* Logout da aplicaÃ§Ã£o                                                  */
 /*----------------------------------------------------------------------*/
 function logout_webpage() {
   var sair = confirm("Deseja sair do sistema?");
@@ -140,7 +140,7 @@ function logout_webpage() {
 }
 
 /*----------------------------------------------------------------------*/
-/* Exibir mensagens de erros através do Dialog do Bootstrap             */
+/* Exibir mensagens de erros atravÃ©s do Dialog do Bootstrap             */
 /*----------------------------------------------------------------------*/
 function exibirMensagemErroPopup() {
   if ($('#msgErro').length == 0) {
@@ -156,7 +156,7 @@ function exibirMensagemErroPopup() {
 /* Exibir mensagem em formato Popup                                     */
 /*----------------------------------------------------------------------*/
 function exibirMensagemPopup(tipoMsg, msg) {
-  toastr[tipoMsg](msg, "Apontamento de horas de OP de granéis").options = {
+  toastr[tipoMsg](msg, "Apontamento de horas de OP de granÃ©is").options = {
     "closeButton": true,
     "debug": false,
     "newestOnTop": false,
@@ -176,7 +176,7 @@ function exibirMensagemPopup(tipoMsg, msg) {
 };
 
 /*----------------------------------------------------------------------*/
-/* Carregar detalhe das folhas de tempos - transação COR6N              */
+/* Carregar detalhe das folhas de tempos - transaÃ§Ã£o COR6N              */
 /* ---> cor6n?onInputProcessing=confirmacaoParcial / confirmacaoFinal   */
 /*----------------------------------------------------------------------*/
 function carregarDetalhesFolhaTempos(tipoConfirmacao){
@@ -190,12 +190,12 @@ function carregarDetalhesFolhaTempos(tipoConfirmacao){
       case 'confirmacaoParcial':
       case 'confirmacaoFinal':
         try {
-          //Verifica se o retorno é uma mensagem de erro em Json
+          //Verifica se o retorno Ã© uma mensagem de erro em Json
           var erro = JSON.parse(retorno);
           exibirMensagemPopup(erro.tipo, erro.msg);
           break;
         }catch (err) {
-          //Retorno é o conteúdo HTML da View apontarConfirmacao
+          //Retorno Ã© o conteÃºdo HTML da View apontarConfirmacao
           $('#divModalApontamento').html(retorno);
           $('#divModalApontamento').modal();
 
@@ -218,7 +218,7 @@ function carregarDetalhesFolhaTempos(tipoConfirmacao){
 }
 
 /*----------------------------------------------------------------------*/
-/* Exibir popup para confirmar exclusão da fase da ordem                */
+/* Exibir popup para confirmar exclusÃ£o da fase da ordem                */
 /*----------------------------------------------------------------------*/
 function estornarApto(jsonLinhaSelecionada) {
   var nro_op      = $('#nro_op').val()              ;
@@ -226,8 +226,8 @@ function estornarApto(jsonLinhaSelecionada) {
   var confirmacao = jsonLinhaSelecionada.confirmacao;
 
   bootbox.dialog({
-    title: "Apontamento de horas de OP de granéis - " + nro_op,
-    message: "Deseja estornar a confirmação " + confirmacao + " da operação " + operacao + "?",
+    title: "Apontamento de horas de OP de granÃ©is - " + nro_op,
+    message: "Deseja estornar a confirmaÃ§Ã£o " + confirmacao + " da operaÃ§Ã£o " + operacao + "?",
     buttons: {
       danger: {
         label: "Sim",
@@ -246,7 +246,7 @@ function estornarApto(jsonLinhaSelecionada) {
               recurso    : jsonLinhaSelecionada.recurso
             },
             beforeSend: function () {
-              waitingDialog.show('Aguarde enquanto o apontamento é estornado');
+              waitingDialog.show('Aguarde enquanto o apontamento Ã© estornado');
             },
             complete: function () {
               waitingDialog.hide();
@@ -264,7 +264,7 @@ function estornarApto(jsonLinhaSelecionada) {
         }
       },
       success: {
-        label: "Não",
+        label: "NÃ£o",
         className: "btn-success"
       }
     }
@@ -272,7 +272,7 @@ function estornarApto(jsonLinhaSelecionada) {
 }
 
 /*----------------------------------------------------------------------*/
-/* Conteúdo da célula selecionada no DataTable                          */
+/* ConteÃºdo da cÃ©lula selecionada no DataTable                          */
 /*----------------------------------------------------------------------*/
 function conteudoCelula(elementoClicado, nomeClasse) {
   return $(elementoClicado).closest('tr').find('.' + nomeClasse).html();
@@ -283,25 +283,25 @@ function conteudoCelula(elementoClicado, nomeClasse) {
 /*----------------------------------------------------------------------*/
 function setDataTable(nomeTabela) {
     odataTable = $(nomeTabela).DataTable({
-    //Ordenação da 1a coluna
+    //OrdenaÃ§Ã£o da 1a coluna
     "aaSorting": [0],
     language: {
       "sEmptyTable": "Nenhum registro encontrado",
-      "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-      "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+      "sInfo": "Mostrando de _START_ atÃ© _END_ de _TOTAL_ registros",
+      "sInfoEmpty": "Mostrando 0 atÃ© 0 de 0 registros",
       "sInfoFiltered": "(Filtrados de _MAX_ registros)",
       "sInfoPostFix": "",
       "sInfoThousands": ".",
-      "sLengthMenu": "_MENU_ resultados por página",
+      "sLengthMenu": "_MENU_ resultados por pÃ¡gina",
       "sLoadingRecords": "Carregando...",
       "sProcessing": "Processando...",
       "sZeroRecords": "Nenhum registro encontrado",
       "sSearch": "Pesquisar",
       "oPaginate": {
-        "sNext": "Próximo",
+        "sNext": "PrÃ³ximo",
         "sPrevious": "Anterior",
         "sFirst": "Primeiro",
-        "sLast": "Último"
+        "sLast": "Ãšltimo"
       },
       "oAria": {
         "sSortAscending": ": Ordenar colunas de forma ascendente",
@@ -347,16 +347,16 @@ function setDataTable(nomeTabela) {
     if (oLinhaSelecionada != ""){
       estornarApto(oLinhaSelecionada);
     } else {
-      exibirMensagemPopup("error", 'Selecione uma confirmação para estornar');
+      exibirMensagemPopup("error", 'Selecione uma confirmaÃ§Ã£o para estornar');
     }
   });
 }
 
 /*----------------------------------------------------------------------*/
-/* Inicialização                                                        */
+/* InicializaÃ§Ã£o                                                        */
 /*----------------------------------------------------------------------*/
 $(document).ready(function () {
-  // Insere a máscara para os inputTexts abaixo:
+  // Insere a mÃ¡scara para os inputTexts abaixo:
   $('#ipt_nro_op'    ).mask('000000000000'     ,{reverse: false});
   $('#hr_apo_tp_prep').mask('0000000000000,000',{reverse: true });
   $('#hr_apo_tp_maq' ).mask('0000000000000,000',{reverse: true });
@@ -365,7 +365,7 @@ $(document).ready(function () {
   $('#qtd_boa'       ).mask('0000000000000,000',{reverse: true });
   $('#refugo'        ).mask('0000000000000,000',{reverse: true });
 
-  // Configura a ação quando pressiona a tecla Enter
+  // Configura a aÃ§Ã£o quando pressiona a tecla Enter
   $('#ipt_nro_op').keypress(function(event){
       var keycode = (event.keyCode ? event.keyCode : event.which);
 
@@ -375,12 +375,12 @@ $(document).ready(function () {
       event.stopPropagation();
   });
 
-  // Associa o id do botão PesquisarOP com a função JavaScript
+  // Associa o id do botÃ£o PesquisarOP com a funÃ§Ã£o JavaScript
   $('#btnPesquisarOP').click(function(){
      pesquisarOrdemProcesso();
   });
 
-  // Limpa o conteúdo html da view, e volta a exibir somente o botão de pesquisar
+  // Limpa o conteÃºdo html da view, e volta a exibir somente o botÃ£o de pesquisar
   $('#imgLogoAche').click(function(){
       $('#divConteudoView').empty();
       $('#divPesquisarOP').removeClass('linhaOculta');
