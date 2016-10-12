@@ -1,4 +1,6 @@
 # ABAP
 SAP ABAP development
 
-There are some ABAP developments that I made last months and could be usefull for someone else
+ABAP/4 is SAP ECC (ERP) programming language which I work since 2008.
+
+In this repository are some interesting developments that I made last months
